@@ -1,0 +1,154 @@
+package xowl.util;
+
+/**
+ * @author xinxian
+ * @create 2020-04-16 16:34
+ **/
+public interface MetricDataKey {
+
+    String JVM_GCUSAGE = "JVM.GcUsage";
+    String JVM_ProcessMemory = "JVM.ProcessMemory";
+    String JVM_ProcessThreadInfo = "JVM.ProcessThreadInfo";
+
+    String OS_CPUSTAT = "OS_CpuStat";
+    String OS_DISKS = "OS.Disks";
+    String OS_DISKSTATES = "OS.DiskStates";
+    String OS_MEMORY = "OS.Memory";
+    String OS_INFO = "OS.Info";
+    String OS_USERS = "OS.Users";
+    String OS_PROCESSIO = "OS.ProcessIo";
+    String OS_PROCESSlIMIT = "OS.ProcessLimit";
+    String OS_UPTIME = "OS.Uptime";
+
+    //GCUSAGE
+    int GC_USAGE_JVMUPDATE = 1;
+    int GC_USAGE_S0CAPACITY = 2;
+    int GC_USAGE_S1CAPACITY = 3;
+    int GC_USAGE_S0USED = 4;
+    int GC_USAGE_S1USED = 5;
+    int GC_USAGE_EDENCAPACITY = 6;
+    int GC_USAGE_EDENUSED = 7;
+    int GC_USAGE_OLDCAPACITY = 8;
+    int GC_USAGE_OLDUSED = 9;
+    int GC_USAGE_METASPACECAPACITY = 10;
+    int GC_USAGE_METASPACEUSED = 11;
+    int GC_USAGE_COMPRESS_CLASSESSPACE_CAPACITY = 12;
+    int GC_USAGE_COMPRESS_CLASSESSPACE_USED = 13;
+    int GC_USAGE_YGC_COUNT = 14;
+    int GC_USAGE_YGC_TIME = 15;
+    int GC_USAGE_FGC_COUNT = 16;
+    int GC_USAGE_FGC_TIME = 17;
+    int GC_USAGE_TOTAL_GCTIME = 18;
+    int GC_USAGE_LAST_GCCAUSE = 19;
+    int GC_USAGE_CURRENTGCCAUSE = 20;
+
+
+    //processMemory
+    int PROCESS_MEMORY_VSS = 30;
+    int PROCESS_MEMORY_RSS = 31;
+    int PROCESS_MEMORY_PSS = 32;
+    int PROCESS_MEMORY_USS = 33;
+
+
+    //memoryUsage
+    int MEMORY_USAGE_INIT = 34;
+    int MEMORY_USAGE_COMMINTTED = 35;
+    int MEMORY_USAGE_USED = 36;
+    int MEMORY_USAGE_MAX = 37;
+    int MEMORY_USAGE_TYPE = 38;
+
+    //memoryPool
+    int MEMORY_POOL_NAME = 39;
+    int MEMORY_POOL_SIMPLE_NAME = 40;
+    int MEMORY_POOL_TYPE = 41;
+    int MEMORY_POOL_USED = 42;
+    int MEMORY_POOL_COMMITTED = 43;
+    int MEMORY_POOL_MAX = 44;
+
+    //ProcessThreadInfo
+    int THREAD_INFO_THREAD_COUNT = 50;
+    int THREAD_INFO_DEADLOCK_FLAG = 51;
+
+    //cpuStat
+    int CPU_STAT_USER = 60;
+    int CPU_STAT_NICE = 61;
+    int CPU_STAT_SYSTEM = 62;
+    int CPU_STAT_IDLE = 63;
+    int CPU_STAT_IOWAIT = 64;
+    int CPU_STAT_IRQ = 65;
+    int CPU_STAT_SOFT_IRQ = 66;
+    int CPU_STAT_STEAL = 67;
+    int CPU_STAT_GUEST = 68;
+    int CPU_STAT_GUEST_NICE = 69;
+
+    //disk
+    int DISK_FILE_SYSTEM = 75;
+    int DISK_SIZE = 76;
+    int DISK_USED = 77;
+    int DISK_AVAIL = 78;
+    int DISK_USE_PERCENT = 79;
+    int DISK_MOUNTED_ON = 80;
+
+    //diskState
+    int DISK_STATE_TOTAL_COMPLETED_READ_NBR = 85;
+    int DISK_STATE_TOTAL_COMPLETED_WRITE_NBR = 86;
+    int DISK_STATE_READ_MERGED_NBR = 87;
+    int DISK_STATE_WRITE_MERGED_NBR = 88;
+    int DISK_STATE_TOTAL_READ_SECTORS_Nbr = 89;
+    int DISK_STATE_TOTAL_WRITE_SECTORS_Nbr = 90;
+    int DISK_STATE_TOTAL_READ_MS = 91;
+    int DISK_STATE_TOTAL_WRITE_MS = 92;
+    int DISK_STATE_IO_REQUEST_IN_PROGRESS = 93;
+    int DISK_STATE_IO_QUEUE_NOT_EMPTY_MS = 94;
+    int DISK_STATE_IO_QUEUE_NOT_EMPTY_WEIGHT_MS = 95;
+
+    //OS
+    int OS_VERSION = 100;
+    int OS_TYPE = 101;
+    int OS_ARCH = 102;
+
+    //MEMORY
+    int OS_MEMORY_TOTAL_PHYSICAL_MEMORY_SIZE = 105;
+    int OS_MEMORY_FREE_PHYSICAL_MEMORY_SIZE = 106;
+    int OS_MEMORY_AVAILABLE_PHYSICAL_MEMORY_SIZE = 107;
+    int OS_MEMORY_BUFFER_SIZE = 108;
+    int OS_MEMORY_CACHE_SIZE = 109;
+    int OS_MEMORY_TOTAL_SWAP_SPACE_SIZE = 110;
+    int OS_MEMORY_FREE_SWAP_SPACE_SIZE = 111;
+    int OS_MEMORY_DIRTY_SIZE_ = 112;
+    int OS_MEMORY_SHARE_SIZE_ = 113;
+
+    //PROCESS_IO
+    int OS_PROCESS_IO_R_CHAR = 120;
+    int OS_PROCESS_IO_W_CHAR = 121;
+    int OS_PROCESS_IO_SYS_CALL_READ_COUNT = 122;
+    int OS_PROCESS_IO_SYS_CALL_WRITE_COUNT = 123;
+    int OS_PROCESS_IO_READ_BYTES = 124;
+    int OS_PROCESS_IO_WRITE_BYTES = 125;
+    int OS_PROCESS_IO_CAN_CELLED_WRITE_BYTES = 126;
+
+    //LimitEntity
+    int OS_LIMIT_ENTITY_SOFT_LIMIT= 130;
+    int OS_LIMIT_ENTITY_HARD_LIMIT= 131;
+    int OS_LIMIT_ENTITY_UNIT= 132;
+    int OS_LIMIT_ENTITY_DESC= 133;
+
+    //OsUser
+    int OS_USER_ID= 135;
+    int OS_USER_NAME= 136;
+
+    //UserGroup
+    int OS_USER_GROUP_ID= 137;
+    int OS_USER_GROUP_NAME= 138;
+
+    //UPTIME
+    int OS_UPTIME_CURRENT_MS = 140;
+    int OS_UPTIME_UPTIME_SECS = 141;
+    int OS_UPTIME_USER_NBR = 142;
+    int OS_UPTIME_LOAD_1_MIN = 143;
+    int OS_UPTIME_LOAD_5_MIN = 144;
+    int OS_UPTIME_LOAD_15_MIN = 145;
+    int OS_UPTIME_RUNNABLE_PROESS_NBR = 146;
+    int OS_UPTIME_CURRENT_TOTAL_PROESS_NBR = 147;
+    int OS_UPTIME_RECENTLY_PID = 148;
+}
