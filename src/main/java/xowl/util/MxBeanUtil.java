@@ -35,7 +35,7 @@ public class MxBeanUtil {
     private static void getConnectAddress() {
         //暂时写死 连接1201进程
         try {
-            VirtualMachine virtualMachine = VirtualMachine.attach("1201");
+            VirtualMachine virtualMachine = VirtualMachine.attach("23552");
             String javaHome = virtualMachine.getSystemProperties().getProperty("java.home");
             String jmxAgent = javaHome + File.separator + "lib" + File.separator + "management-agent.jar";
             virtualMachine.loadAgent(jmxAgent, "com.sun.management.jmxremote");
@@ -225,7 +225,7 @@ public class MxBeanUtil {
             long[] deadlockedThreads = threadMXBean.findDeadlockedThreads();
             //写入字段类型 init
             dataOutputStream.writeInt(MetricDataType.LONG);
-            if (deadlockedThreads.length > 0) {
+            if (deadlockedThreads != null && deadlockedThreads.length > 0) {
                 //写入字段值
                 dataOutputStream.writeLong(1);
             } else {

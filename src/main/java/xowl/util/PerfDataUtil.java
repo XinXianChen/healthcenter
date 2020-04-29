@@ -95,7 +95,7 @@ public class PerfDataUtil {
         if (counters != null && counters.size() > 0) {
             DataWriteUtil.writeLong(MetricDataType.LONG, ((LongCounter) counters.get(0)).longValue(), fieldType, dataOutputStream);
         } else {
-            logger.error(" Value does not exist key:{}",key);
+            logger.warn(" Value does not exist key:{}",key);
         }
     }
 }

@@ -23,29 +23,25 @@ import java.util.concurrent.TimeUnit;
 @Component
 public class StartTaskChecker implements DisposableBean {
 
-    private static final Logger logger = LoggerFactory.getLogger(StartTaskChecker.class);
-
     private static final ScheduledExecutorService scheduledExecutorService =
             Executors.newSingleThreadScheduledExecutor();
 
+    private MetricDataHandler handler;
 
 
     @PostConstruct
     public void init() {
+        String metricDatas = "JVM.ProcessMemory;JVM.GcUsage;JVM.ProcessThreadInfo;OS_CpuStat;OS.Disks;OS.DiskStates;OS.Memory;OS.Users;OS.Info;OS.ProcessIo;OS.ProcessLimit;OS.Uptime";
+        Cmd cmd = new Cmd();
+        cmd.setPid(23552);
+        cmd.setMetricDatas(metricDatas);
+        handler = new DefaultMetricDataHandlerImpl(cmd,new MetricModule());
         scheduledExecutorService.scheduleAtFixedRate(this::collect, 0,
                 5, TimeUnit.SECONDS);
     }
 
     private void collect() {
-        String metricDatas = "JVM.ProcessThreadInfo;JVM.GcUsage;JVM.ProcessThreadInfo;OS_CpuStat;OS.Disks;OS.DiskStates;OS.Memory;OS.Users;OS.Info;OS.ProcessIo;OS.ProcessLimit;OS.Uptime";
-        Cmd cmd = new Cmd();
-        cmd.setPid(1201);
-        cmd.setMetricDatas(metricDatas);
-        MetricDataHandler handler = new DefaultMetricDataHandlerImpl(cmd,new MetricModule());
-        long s = System.currentTimeMillis();
         byte[] collect = handler.collect();
-        logger.info("colllect cost " + (System.currentTimeMillis() - s) +" ms");
-
 //        s = System.currentTimeMillis();
 //        CompositeData parse = ParseUtil.parse(collect);
 //        logger.info("parse cost: " + (System.currentTimeMillis() - s) + " ms");

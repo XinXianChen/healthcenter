@@ -7,10 +7,11 @@ package xowl.util;
 public interface MetricDataType {
 
     double VERSION = 1.0;
-    int INT = 1;
-    int LONG = 2;
-    int DOUBLE = 3;
-    int STRING = 4;
-    int END = 5;
+    int INT = 20001;
+    int LONG = 20002;
+    int DOUBLE = 20003;
+    int STRING = 20004;
+    int END = 20005;
+    int COMPLETE = 20006;
 
 }

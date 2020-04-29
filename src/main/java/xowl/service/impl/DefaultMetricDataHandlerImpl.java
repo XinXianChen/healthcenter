@@ -19,26 +19,34 @@ import java.io.IOException;
  **/
 public class DefaultMetricDataHandlerImpl extends AbstractMetricDataHandler {
 
+    private ByteArrayOutputStream outputStream;
+
+    private DataOutputStream dataOutputStream;
+
     public DefaultMetricDataHandlerImpl(Cmd cmd, MetricModule metricModule) {
         super.cmd = cmd;
         super.metricModule = metricModule;
         perfDataUtil = PerfDataUtil.connect(cmd.getPid());
         isPerfDataSupport = perfDataUtil != null;
+        //字节数组流  用于保存数据
+        outputStream = new ByteArrayOutputStream(512);
+        dataOutputStream = new DataOutputStream(outputStream);
     }
 
     @Override
     public byte[] collect() {
         final String metricDatas = cmd.getMetricDatas();
         final String[] split = metricDatas.split(";");
-        //字节数组流  用于保存数据
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream(512);
-        DataOutputStream dataOutputStream = new DataOutputStream(outputStream);
-        //将版本好写入
         try {
+            //重置
+            outputStream.reset();
+            //将版本号写入
             dataOutputStream.writeDouble(MetricDataType.VERSION);
             for (String metricName : split) {
                 collectDataByMetricName(metricName, dataOutputStream);
             }
+            //写入完成标识
+            dataOutputStream.writeInt(MetricDataType.COMPLETE);
         } catch (IOException e) {
             logger.error("collect hotspot jvm data error:{}", e);
         }

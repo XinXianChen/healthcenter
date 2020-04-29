@@ -40,6 +40,10 @@ public class ParseUtil {
             while (buffer.hasRemaining()) {
                 //读取实体类型
                 int entityType = buffer.getInt();
+                if (entityType == MetricDataType.COMPLETE) {
+                    //说明已经读取完成
+                    break;
+                }
                 switch (entityType) {
                     case EntityType.JVM_GCUSAGE :
                         data.setGcUsage(readGcUsage(buffer));
